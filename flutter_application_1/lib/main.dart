@@ -27,7 +27,10 @@ class MyHomePage extends StatelessWidget {
         title: const Text("Testing checklist"),
       ),
       body: const Column(
-        children: [Progress()],
+        children: [
+          Progress(),
+          TaskList(),
+        ],
       ),
     );
   }
@@ -41,11 +44,14 @@ class Progress extends StatelessWidget {
     return const Column(
       children: [
         Text("Here is the Data to be displayed"),
-        LinearProgressIndicator(value: 0.0,)
+        LinearProgressIndicator(
+          value: 0.0,
+        ),
       ],
     );
   }
 }
+
 class TaskList extends StatelessWidget {
   const TaskList({super.key});
 
@@ -60,21 +66,22 @@ class TaskList extends StatelessWidget {
         TaskItem(label: "Task5"),
         TaskItem(label: "Task6"),
       ],
-    )
+    );
   }
 }
+
 class TaskItem extends StatelessWidget {
   final String label;
 
-  const TaskItem ({Key key, @required this.label}) : super(key, key)
-  
+  const TaskItem({super.key, required this.label});
+
   @override
   Widget build(BuildContext context) {
-    return Row (children: [
-      const Checkbox(value: false, onChanged: null),
-      Text(label),
-    ],);
+    return Row(
+      children: [
+        const Checkbox(value: true, onChanged: null),
+        Text(label),
+      ],
+    );
   }
-
 }
-
